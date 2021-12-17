@@ -17,7 +17,8 @@
                                 <td>{{$usuario->email}}</td>
                                 <td>
                                     <a href="" class="btn btn-primary">Ver</a>
-                                    <button class="btn btn-success" wire:click='editar_usuario({{$usuario}})'>Editar</a>
+                                    <button class="btn btn-success" wire:click='editar_usuario({{$usuario}})'>Editar</button>
+                                    <button class="btn btn-danger" wire:click='eliminar_usuario({{$usuario}})'>Eliminar</button>
                                 </td>
                             </tr>
                             @endforeach
@@ -27,4 +28,5 @@
         </div>
     </div>
     @include('livewire.usuarios.edit-usuarios')
+    @include('livewire.usuarios.eliminar-usuario')
 </div>

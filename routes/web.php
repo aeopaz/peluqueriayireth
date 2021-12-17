@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\MensajeController;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\UserController;
@@ -16,12 +17,14 @@ use App\Http\Controllers\UserController;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('auth.login');
 });
 
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 Route::resource('/user', UserController::class);
+
+Route::get('/mensaje',[MensajeController::class,'index'])->name('mensaje.index');
 
 

@@ -14,8 +14,8 @@ return [
     |
     */
 
-    'title' => 'Peluqueria',
-    'title_prefix' => '',
+    'title' => '',
+    'title_prefix' => 'Peluqueria |',
     'title_postfix' => '',
 
     /*
@@ -246,10 +246,22 @@ return [
             'url'  => 'admin/blog',
             'can'  => 'manage-blog',
         ],
+        [
+            'text'        => 'Inicio',
+            'url'         => 'home',
+            'icon'        => 'fas fa-fw fa-home',
+            'label_color' => 'success',
+        ],
         ['header' => 'OPCIONES ADMINISTRADOR'],
         [
             'text'        => 'Usuarios',
             'url'         => 'user',
+            'icon'        => 'far fa-fw fa-user',
+            'label_color' => 'success',
+        ],
+        [
+            'text'        => 'Mensajes',
+            'route'         => 'mensaje.index',
             'icon'        => 'far fa-fw fa-user',
             'label_color' => 'success',
         ],
