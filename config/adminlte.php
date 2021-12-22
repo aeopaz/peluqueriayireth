@@ -266,6 +266,12 @@ return [
             'label_color' => 'success',
         ],
         [
+            'text'        => 'Servicios',
+            'route'         => 'servicio.index',
+            'icon'        => 'far fa-fw fa-file',
+            'label_color' => 'success',
+        ],
+        [
             'text'        => 'pages',
             'url'         => 'admin/pages',
             'icon'        => 'far fa-fw fa-file',

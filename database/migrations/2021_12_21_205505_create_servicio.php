@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateCortesTable extends Migration
+class CreateServicio extends Migration
 {
     /**
      * Run the migrations.
@@ -13,9 +13,10 @@ class CreateCortesTable extends Migration
      */
     public function up()
     {
-        Schema::create('cortes', function (Blueprint $table) {
+        Schema::create('servicio', function (Blueprint $table) {
             $table->id();
-            $table->string('name');
+            $table->string('nombre');
+            $table->decimal('costo',10);
             $table->timestamps();
         });
     }
@@ -27,6 +28,6 @@ class CreateCortesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('cortes');
+        Schema::dropIfExists('servicio');
     }
 }

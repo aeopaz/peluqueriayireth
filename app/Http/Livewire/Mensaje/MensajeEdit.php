@@ -23,6 +23,7 @@ class MensajeEdit extends Component
     }
 
     public function mensaje_edit(Mensaje $mensaje){//Asigna a la variable mensaje el valor recibido del componente MensaIndex
+        dd($mensaje);
         $this->mensaje=$mensaje;
     }
 

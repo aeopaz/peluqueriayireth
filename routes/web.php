@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\MensajeController;
+use App\Http\Controllers\ServicioController;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\UserController;
@@ -26,5 +27,6 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 Route::resource('/user', UserController::class);
 
 Route::get('/mensaje',[MensajeController::class,'index'])->name('mensaje.index');
+Route::get('/servicio',[ServicioController::class,'index'])->name('servicio.index');
 
 
