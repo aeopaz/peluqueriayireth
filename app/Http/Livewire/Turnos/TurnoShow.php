@@ -9,7 +9,7 @@ use Livewire\Component;
 class TurnoShow extends Component
 {
     protected $listeners=['turno_show'];
-    public $id_turno=6;
+    public $id_turno;
 
 
     public function turno_show(Turno $turno){

@@ -23,43 +23,49 @@
 
         </div>
     </div>
+
     <input type="text" class="form-control mt-1" placeholder="Buscar" wire:model='buscar'>
-    <table class="table table-hover">
-        <thead>
-            <tr>
-                <th wire:click='ordenar("turnos.id")'>No. Turno</th>
-                <th wire:click='ordenar("name")'>Cliente</th>
-                <th wire:click='ordenar("created_at")'>Fecha</th>
-                <th wire:click='ordenar("created_at")'>Hora</th>
-                <th wire:click='ordenar("estado")'>Estado</th>
-                <th>Acciones</th>
-            </tr>
-        </thead>
-        <tbody>
-
-            @foreach ($turnos as $turno)
+    @if (count($turnos))
+        <table class="table table-hover">
+            <thead>
                 <tr>
-                    <td>{{ $turno->id_turno }}</td>
-                    <td>{{ $turno->nombre_usuario }}</td>
-                    <td>{{ date_format($turno->created_at, 'Y-M-d') }}</td>
-                    <td>{{ date_format($turno->created_at, 'g:i:s') }}</td>
-                    <td>{{ $turno->estado }}</td>
-                    <td>
-                        @if ($turno->estado == 'Pendiente')
-                            <button class="btn btn-info"
-                                wire:click='atender_turno({{ $turno }})'>Atender</button>
-                            <button class="btn btn-danger"
-                                wire:click='cancelar_turno({{ $turno }})'>Cancelar</button>
-                        @elseif ($turno->estado == 'En proceso')
-                            <button class="btn btn-primary" wire:click='atender_turno({{ $turno }})'>Marcar como
-                                Atendido</button>
-                        @elseif ($turno->estado == 'Atendido')
-                            <button class="btn btn-success">Atendido</button>
-                        @endif
-
-                        </th>
+                    <th wire:click='ordenar("turnos.id")'>No. Turno</th>
+                    <th wire:click='ordenar("name")'>Cliente</th>
+                    <th wire:click='ordenar("created_at")'>Fecha</th>
+                    <th wire:click='ordenar("created_at")'>Hora</th>
+                    <th wire:click='ordenar("estado")'>Estado</th>
+                    <th>Acciones</th>
                 </tr>
-            @endforeach
-        </tbody>
-    </table>
+            </thead>
+            <tbody>
+
+                @foreach ($turnos as $turno)
+                    <tr>
+                        <td>{{ $turno->id_turno }}</td>
+                        <td>{{ $turno->nombre_usuario }}</td>
+                        <td>{{ date_format($turno->created_at, 'Y-M-d') }}</td>
+                        <td>{{ date_format($turno->created_at, 'g:i:s') }}</td>
+                        <td>{{ $turno->estado }}</td>
+                        <td>
+                            @if ($turno->estado == 'Pendiente')
+                                <button class="btn btn-info"
+                                    wire:click='atender_turno({{ $turno }})'>Atender</button>
+                                <button class="btn btn-danger"
+                                    wire:click='cancelar_turno({{ $turno }})'>Cancelar</button>
+                            @elseif ($turno->estado == 'En proceso')
+                                <button class="btn btn-primary" wire:click='atender_turno({{ $turno }})'>Marcar
+                                    como
+                                    Atendido</button>
+                            @elseif ($turno->estado == 'Atendido')
+                                <button class="btn btn-success">Atendido</button>
+                            @endif
+
+                            </th>
+                    </tr>
+                @endforeach
+            </tbody>
+        </table>
+    @else
+    No se han encontrado resultados
+    @endif
 </div>

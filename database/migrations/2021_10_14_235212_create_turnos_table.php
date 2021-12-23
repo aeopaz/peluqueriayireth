@@ -18,6 +18,7 @@ class CreateTurnosTable extends Migration
             //$table->date('fecha');
             //$table->time('hora');
             $table->integer('id_cliente');
+            $table->string('nombre_cliente')->nullable();
             $table->string('estado');
             $table->timestamps();
         });

@@ -19,6 +19,21 @@
                             {{ date(now()) }}
                         </div>
                     </div>
+                    @if (Auth::guest())
+                        <div class="row">
+                            <div class="col">
+                                <Label>Nombre:</Label>
+                            </div>
+                            <div class="col">
+                                <input type="text" class="form-control @error('nombre_cliente') is-invalid @enderror" wire:model.defer='nombre_cliente'>
+                                @error('nombre_cliente')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
+                            </div>
+                        </div>
+                    @endif
                     <div class="row ml-0"><label for="">Seleccione Servicio:</label></div>
                     @if ($errors->any())
                         <b style="color:red">Debe seleccionar al menos un servicio</b>
