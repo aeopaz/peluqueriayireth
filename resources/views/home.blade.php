@@ -20,6 +20,7 @@
         </div>
         @livewire('turnos.turno-index')
         @livewire('turnos.turno-create')
+        @livewire('turnos.turno-show')
     </div>
 @stop
 @section('css')

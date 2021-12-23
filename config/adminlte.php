@@ -247,7 +247,13 @@ return [
             'can'  => 'manage-blog',
         ],
         [
-            'text'        => 'Inicio',
+            'text'        => 'Solicitar Turno',
+            'url'         => 'home',
+            'icon'        => 'fas fa-fw fa-home',
+            'label_color' => 'success',
+        ],
+        [
+            'text'        => 'Mis Turnos',
             'url'         => 'home',
             'icon'        => 'fas fa-fw fa-home',
             'label_color' => 'success',
@@ -271,13 +277,13 @@ return [
             'icon'        => 'far fa-fw fa-file',
             'label_color' => 'success',
         ],
-        [
+       /* [
             'text'        => 'pages',
             'url'         => 'admin/pages',
             'icon'        => 'far fa-fw fa-file',
             'label'       => 4,
             'label_color' => 'success',
-        ],
+        ],*/
         ['header' => 'account_settings'],
         [
             'text' => 'profile',

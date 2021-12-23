@@ -8,4 +8,6 @@ use Illuminate\Database\Eloquent\Model;
 class DetalleTurno extends Model
 {
     use HasFactory;
+    protected $table='detalle_turnos';
+    protected $fillable=['id_turno','id_servicio'];
 }

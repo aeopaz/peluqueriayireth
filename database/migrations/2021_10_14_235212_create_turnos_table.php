@@ -15,8 +15,8 @@ class CreateTurnosTable extends Migration
     {
         Schema::create('turnos', function (Blueprint $table) {
             $table->id();
-            $table->date('fecha');
-            $table->time('hora');
+            //$table->date('fecha');
+            //$table->time('hora');
             $table->integer('id_cliente');
             $table->string('estado');
             $table->timestamps();

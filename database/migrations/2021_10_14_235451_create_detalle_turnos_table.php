@@ -16,7 +16,7 @@ class CreateDetalleTurnosTable extends Migration
         Schema::create('detalle_turnos', function (Blueprint $table) {
             $table->id();
             $table->integer('id_turno');
-            $table->integer('id_corte');
+            $table->integer('id_servicio');
             $table->timestamps();
 
         });
