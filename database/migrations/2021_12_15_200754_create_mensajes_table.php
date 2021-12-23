@@ -16,7 +16,7 @@ class CreateMensajesTable extends Migration
         Schema::create('mensajes', function (Blueprint $table) {
             $table->id();
             $table->string('titulo',45)->default('');
-            $table->string('cuerpo',200)->default('');
+            $table->text('cuerpo');
             $table->string('cita',45)->default('');
             $table->timestamps();
         });

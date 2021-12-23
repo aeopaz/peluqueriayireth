@@ -254,7 +254,7 @@ return [
         ],
         [
             'text'        => 'Mis Turnos',
-            'url'         => 'home',
+            'route'         => 'historial_turnos.index',
             'icon'        => 'fas fa-fw fa-home',
             'label_color' => 'success',
         ],

@@ -1,5 +1,6 @@
 <div>
     <!-- Modal -->
+    @if(isset($detalle_turno[0]))
     <div class="modal fade" id="showTurnoModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
         aria-hidden="true" wire:ignore.self>
         <div class="modal-dialog" role="document">
@@ -39,4 +40,5 @@
             </div>
         </div>
     </div>
+    @endif
 </div>

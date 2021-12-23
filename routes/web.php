@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\MensajeController;
 use App\Http\Controllers\ServicioController;
+use App\Http\Controllers\TurnoController;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\UserController;
@@ -28,5 +29,6 @@ Route::resource('/user', UserController::class);
 
 Route::get('/mensaje',[MensajeController::class,'index'])->name('mensaje.index');
 Route::get('/servicio',[ServicioController::class,'index'])->name('servicio.index');
+Route::get('/historial_turnos',[TurnoController::class,'index'])->name('historial_turnos.index');
 
 

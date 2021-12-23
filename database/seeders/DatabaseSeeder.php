@@ -17,7 +17,8 @@ class DatabaseSeeder extends Seeder
     {
         $this->call(UserSeeder::class);
         $this->call(ServicioSeeder::class);
+        $this->call(MensajeSeeder::class);
         \App\Models\User::factory(99)->create();
-        Mensaje::factory(50)->create();
+        //Mensaje::factory(50)->create();
     }
 }

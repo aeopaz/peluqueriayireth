@@ -25,8 +25,7 @@ class TurnoShow extends Component
         $detalle_turno=DetalleTurno::join('servicio','servicio.id','id_servicio')
         ->join('turnos','turnos.id','id_turno')
         ->where('id_turno',$this->id_turno)->get();
-        $id_turno=$this->id_turno;
-        return view('livewire.turnos.turno-show',compact('detalle_turno','id_turno'));
+        return view('livewire.turnos.turno-show',compact('detalle_turno'));
     }
 
 
