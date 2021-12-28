@@ -13,7 +13,7 @@
                 <div class="card">
                     <div class="card-header"><b><em> {{ $mensaje->titulo }}</em></b></div>
                     <div class="card-body">
-                       <em> {{ $mensaje->cuerpo }}</em>
+                        <em> {{ $mensaje->cuerpo }}</em>
                     </div>
                     <div class="text-center">
                         <b><em> {{ $mensaje->cita }}</em></b>
@@ -25,6 +25,7 @@
         @livewire('turnos.turno-index')
         @livewire('turnos.turno-create')
         @livewire('turnos.turno-show')
+        @include('local.cerrado')
     </div>
 @stop
 @section('css')
@@ -40,6 +41,7 @@
             border-color: black;
             background: rgb(156, 133, 133);
         }
+
         .proximo-turno {
             height: 100px;
             width: 200px;
@@ -52,6 +54,7 @@
             background: rgb(71, 70, 70);
 
         }
+
         .solicitar-turno {
             height: 100px;
             width: 200px;

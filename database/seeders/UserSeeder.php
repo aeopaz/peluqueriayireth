@@ -4,6 +4,9 @@ namespace Database\Seeders;
 
 use App\Models\User;
 use Illuminate\Database\Seeder;
+use Illuminate\Support\Facades\Hash;
+
+
 
 
 class UserSeeder extends Seeder
@@ -20,21 +23,21 @@ class UserSeeder extends Seeder
             'email'=>'aeopaz@gmail.com',
             'avatar'=>'foto',
             'rol'=>'admin',
-            'password'=>'$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi'
+            'password'=>Hash::make('12345678'),
         ]);
         User::create([
             'name'=>'Andrés Miguel Cortes Zambrano',
             'email'=>'andres@andres.com',
             'avatar'=>'foto',
             'rol'=>'peluquero',
-            'password'=>'$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi'
+            'password'=>Hash::make('12345678'),
         ]);
         User::create([
             'name'=>'Invitado',
             'email'=>'invitado@invitado.com',
             'avatar'=>'foto',
             'rol'=>'invitado',
-            'password'=>'$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi'
+            'password'=>Hash::make('12345678'),
         ]);
     }
 }
