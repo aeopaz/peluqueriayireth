@@ -8,6 +8,7 @@
                 <th wire:click='ordenar("created_at")'>Fecha</th>
                 <th wire:click='ordenar("created_at")'>Hora</th>
                 <th wire:click='ordenar("estado")'>Estado</th>
+                <th>Acciones</th>
 
             </tr>
         </thead>
@@ -20,6 +21,7 @@
                     <td>{{ date_format($turno->created_at, 'Y-M-d') }}</td>
                     <td>{{ date_format($turno->created_at, 'g:i:s') }}</td>
                     <td>{{ $turno->estado }}</td>
+                    <td><button class="btn btn-primary" wire:click='show_detalle_turno({{ $turno }})'>Ver</button></td>
                 </tr>
             @endforeach
         </tbody>

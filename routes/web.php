@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\InicioController;
+use App\Http\Controllers\LocalController;
 use App\Http\Controllers\MensajeController;
 use App\Http\Controllers\ServicioController;
 use App\Http\Controllers\TurnoController;
@@ -20,7 +21,7 @@ use App\Http\Controllers\UserController;
 */
 
 Route::get('/', function () {
-    return view('inicial.index');
+    return view('inicio.index');
 });
 
 Auth::routes();
@@ -32,5 +33,6 @@ Route::get('/inicio',[InicioController::class,'index'])->name('inicio.index');
 Route::get('/mensaje',[MensajeController::class,'index'])->name('mensaje.index');
 Route::get('/servicio',[ServicioController::class,'index'])->name('servicio.index');
 Route::get('/historial_turnos',[TurnoController::class,'index'])->name('historial_turnos.index');
+Route::get('/estado_local/{tipo_estado}',[LocalController::class,'estado_local'])->name('estado_local');
 
 

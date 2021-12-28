@@ -3,24 +3,60 @@
     <div class="container">
         <div class="row justify-content-center">
 
-            @if (isset($turno_usuario_actual)){{-- Valida si el usuario tiene un turno pendiente --}}
-                <div class="turno-actual">
-                    <a href="#" style="color: black" class="btn">Tu Turno es el No.
-                        {{ $turno_usuario_actual->id }}</a>
-                </div>
-            @else
-                <div class="solicitar-turno">
-                    <a href="#" style="color: white" class="btn" wire:click='create_turno'>Solicitar turno</a>
+            @if ($turno_usuario_actual == null){{-- Valida si el usuario tiene un turno pendiente --}}
+                <div class="row">
+                    <button class="btn btn-primary" wire:click='create_turno'>Solicitar turno</button>
                 </div>
             @endif
 
-            @if (isset($proximo_turno)){{-- Valida si el usuario tiene un turno pendiente --}}
-                <div class="proximo-turno">
-                    <a href="#" style="color: white" class="btn">Próximo Turno
-                        {{ $proximo_turno->id }}</a>
-                </div>
-            @endif
+        </div>
+        {{-- Muestra los turnos en curso, en cola y el turno del usuario logueado --}}
+        <div class="row justify-content-center">
+            <div class="col-4">
+                <div class="row justify-content-center"><b>Turnos en Cola</b></div>
+                @if (count($pendientes) == 0)
+                    <div class="row justify-content-center">
+                        --
+                    </div>
+                @else
+                    <ul>
+                        @foreach ($pendientes as $pendiente)
+                            <div class="row justify-content-center">
+                                <li>Turno No. {{ $pendiente->id }}</li>
+                            </div>
+                        @endforeach
+                    </ul>
+                @endif
 
+            </div>
+            <div class="col-4">
+                <div class="row justify-content-center"><b class="h1">Tu Turno</b></div>
+                <div class="row justify-content-center">
+                    @if ($turno_usuario_actual == null)
+                        <h2>--</h2>
+                    @else
+                        <h2>{{ $turno_usuario_actual->id }}</h2>
+                    @endif
+
+                </div>
+            </div>
+            <div class="col-4">
+                <div class="row justify-content-center"><b>Turnos en proceso</b></div>
+                @if (count($en_proceso) == 0)
+                    <div class="row justify-content-center">
+                        --
+                    </div>
+                @else
+                    <ul>
+                        @foreach ($en_proceso as $proceso)
+                            <div class="row justify-content-center">
+                                <li>Turno No. {{ $proceso->id }}</li>
+                            </div>
+                        @endforeach
+                    </ul>
+                @endif
+
+            </div>
         </div>
     </div>
 
@@ -40,32 +76,57 @@
             <tbody>
 
                 @foreach ($turnos as $turno)
-                    <tr>
-                        <td>{{ $turno->id_turno }}</td>
-                        <td>{{ $turno->nombre_usuario }}</td>
-                        <td>{{ date_format($turno->created_at, 'Y-M-d') }}</td>
-                        <td>{{ date_format($turno->created_at, 'g:i:s') }}</td>
-                        <td>{{ $turno->estado }}</td>
-                        <td>
-                            @if ($turno->estado == 'Pendiente')
+                    <tr {{-- Estable el color de la fila dependiendo del estado --}} @if ($turno->estado == 'Pendiente')
+                        class="table-info"
+                    @elseif ($turno->estado == 'En proceso')
+                        class="table-warning"
+                    @elseif ($turno->estado == 'Atendido')
+                        class="table-success"
+                    @elseif ($turno->estado == 'Cancelado')
+                        class="table-danger"
+                @endif>
+                <td>{{ $turno->id_turno }}</td>
+                <td>{{ $turno->nombre_cliente . '-' . $turno->rol }}</td>
+                <td>{{ date_format($turno->created_at, 'Y-M-d') }}</td>
+                <td>{{ date_format($turno->created_at, 'g:i:s') }}</td>
+                <td>{{ $turno->estado }}</td>
+                <td>
+                    <button class="btn btn-primary" wire:click='show_detalle_turno({{ $turno }})'>Ver</button>
+                    <button class="btn btn-light" wire:click='atender_turno({{ $turno }})'>
+                        @if ($turno->estado == 'Pendiente')
+                            Atender
+                        @elseif ($turno->estado == 'En proceso')
+                            Marcar como Atendido
+                        @elseif ($turno->estado == 'Atendido')
+                            Atendido
+                        @elseif ($turno->estado == 'Cancelado')
+                            Cancelado
+                        @endif
+                        {{-- Boton Cancelar el turno --}}
+                        @if ($turno->estado == 'Pendiente')
+                            <button class="btn btn-dark ml-1"
+                                wire:click='cancelar_turno({{ $turno->id_turno }})'>Cancelar
+                            </button>
+                        @endif
+                    </button>
+                    {{-- @if ($turno->estado == 'Pendiente')
                                 <button class="btn btn-info"
                                     wire:click='atender_turno({{ $turno }})'>Atender</button>
                                 <button class="btn btn-danger"
-                                    wire:click='cancelar_turno({{ $turno }})'>Cancelar</button>
+                                    wire:click='cancelar_turno({{ $turno->id_turno }})'>Cancelar</button>
                             @elseif ($turno->estado == 'En proceso')
-                                <button class="btn btn-primary" wire:click='atender_turno({{ $turno }})'>Marcar
+                                <button class="btn btn-primary" wire:click='atender_turno({{ $turno->id_turno }})'>Marcar
                                     como
                                     Atendido</button>
                             @elseif ($turno->estado == 'Atendido')
                                 <button class="btn btn-success">Atendido</button>
-                            @endif
-
-                            </th>
+                            @endif --}}
+                    </th>
                     </tr>
-                @endforeach
-            </tbody>
-        </table>
-    @else
+    @endforeach
+    </tbody>
+    </table>
+@else
     No se han encontrado resultados
     @endif
 </div>

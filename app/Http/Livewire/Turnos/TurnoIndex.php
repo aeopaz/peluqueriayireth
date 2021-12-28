@@ -16,6 +16,8 @@ class TurnoIndex extends Component
         $turnos=Turno::select(
         'turnos.id as id_turno',
         'name as nombre_usuario',
+        'nombre_cliente',//Este campo es para poder guardar el nombre cuando el cliente no ha iniciado sesión
+        'rol',
         'turnos.created_at',
         'turnos.estado')
         ->join('users','users.id','id_cliente')
@@ -29,8 +31,11 @@ class TurnoIndex extends Component
         ->orWhere('estado','En proceso');})
         ->where('id_cliente',Auth::user()->id)
         ->first();
-        //Obtiene el proximo turno
-        if($turno_usuario_actual){
+        //Obtiene los turnos en proceso
+        $en_proceso=Turno::where('estado','En proceso')->get();
+        //Obtiene los turnos pendientes o en cola
+        $pendientes=Turno::where('estado','Pendiente')->get();
+       /* if($turno_usuario_actual){
             $proximo_turno=Turno::where(function ($query){$query->where('estado','Pendiente')
                 ->orWhere('estado','En proceso');})
                 ->where('id','<',$turno_usuario_actual->id)
@@ -40,9 +45,9 @@ class TurnoIndex extends Component
            ->where('estado','pendiente')
            ->where('id_cliente','<>',Auth::user()->id)
            ->first();
-        }
+        }*/
 
-        return view('livewire.turnos.turno-index',compact('turnos','turno_usuario_actual','proximo_turno'));
+        return view('livewire.turnos.turno-index',compact('turnos','turno_usuario_actual','en_proceso','pendientes'));
     }
 
     public function create_turno(){
@@ -59,6 +64,7 @@ class TurnoIndex extends Component
     }
 
     public function atender_turno(Turno $turno){
+        //dd($turno->id);
         $turno=Turno::find($turno->id);
         if($turno->estado=='Pendiente'){
             $turno->estado='En proceso';
@@ -69,10 +75,17 @@ class TurnoIndex extends Component
         }
     }
     public function cancelar_turno(Turno $turno){
+        //dd($turno->id);
         $turno=Turno::find($turno->id);
         if($turno->estado=='Pendiente'){
             $turno->estado='Cancelado';
             $turno->save();
         }
+    }
+
+    public function show_detalle_turno(Turno $turno){
+        $this->emit('modal', 'showTurnoModal', 'show');
+        $this->emit('turno_show', $turno->id);
+
     }
 }

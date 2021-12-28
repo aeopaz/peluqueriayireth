@@ -32,8 +32,9 @@ class MensajeIndex extends Component
 
     public function editar_mensaje(Mensaje $mensaje){//Editar mensaje
 
-        $this->emit('modal','editarMensajeModal','show');//Abre modal editar
         $this->emit('mensaje_edit',$mensaje);//Envía al componente MensajeEdit el mensaje seleccionado para editar
+        $this->emit('modal','editarMensajeModal','show');//Abre modal editar
+        
     }
 
 

@@ -8,6 +8,7 @@
 
 @section('content')
 @livewire('turnos.turno-historial')
+@livewire('turnos.turno-show')
 @stop
 
 @section('css')

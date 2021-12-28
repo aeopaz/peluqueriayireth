@@ -27,6 +27,7 @@ class TurnoShow extends Component
         ->where('id_turno',$this->id_turno)->get();
         return view('livewire.turnos.turno-show',compact('detalle_turno'));
     }
+    
 
 
 }

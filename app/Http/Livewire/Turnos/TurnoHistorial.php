@@ -39,4 +39,9 @@ class TurnoHistorial extends Component
         }
 
     }
+    public function show_detalle_turno(Turno $turno){
+        $this->emit('modal', 'showTurnoModal', 'show');
+        $this->emit('turno_show', $turno->id);
+
+    }
 }

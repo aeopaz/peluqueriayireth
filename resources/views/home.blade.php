@@ -12,7 +12,7 @@
             <div class="col-md-8">
                 <div class="card">
                     <div class="card-header"><b><em> {{ $mensaje->titulo }}</em></b></div>
-                    <div class="card-body bg-success">
+                    <div class="card-body">
                        <em> {{ $mensaje->cuerpo }}</em>
                     </div>
                     <div class="text-center">

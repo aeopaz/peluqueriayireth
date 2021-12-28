@@ -43,7 +43,7 @@ class TurnoCreate extends Component
         
         //Crea el turno
         $turno = new Turno();
-        $turno->id_cliente = $id_usuario;
+        $turno->id_cliente = $id_usuario;//Auth::user()->id;//
         $turno->nombre_cliente=$this->nombre_cliente;
         $turno->estado = 'Pendiente';
         $turno->save();
@@ -58,7 +58,7 @@ class TurnoCreate extends Component
             $detalle_turno->id_servicio = $this->servicio[$i];
             $detalle_turno->save();
         }
-        $this->reset(['servicio']);
+        $this->reset(['servicio','nombre_cliente']);
         $this->emit('modal', 'crearTurnoModal', 'hide');
         $this->emit('modal', 'showTurnoModal', 'show');
         $this->emit('turno_show', $turno->id);
