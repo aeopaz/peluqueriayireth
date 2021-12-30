@@ -25,13 +25,13 @@
     <div id="carouselExampleSlidesOnly" class="carousel slide" data-ride="carousel">
             <div class="carousel-inner">
                 <div class="carousel-item active">
-                    <img class="d-block w-100" src="{{ asset('img/fondo1.gif') }}" alt="First slide">
+                    <img class="d-block w-100" src="{{ secure_asset('img/fondo1.gif') }}" alt="First slide">
                 </div>
                 <div class="carousel-item">
-                    <img class="d-block w-100" src="{{ asset('img/fondo2.jpg') }}" alt="Second slide">
+                    <img class="d-block w-100" src="{{ secure_asset('img/fondo2.jpg') }}" alt="Second slide">
                 </div>
                 <div class="carousel-item">
-                    <img class="d-block w-100" src="{{ asset('img/fondo3.jpg') }}" alt="Third slide">
+                    <img class="d-block w-100" src="{{ secure_asset('img/fondo3.jpg') }}" alt="Third slide">
                 </div>
             </div>
         </div>
