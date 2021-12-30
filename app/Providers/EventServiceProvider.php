@@ -6,6 +6,7 @@ use App\Models\Local;
 use Illuminate\Auth\Events\Registered;
 use Illuminate\Auth\Listeners\SendEmailVerificationNotification;
 use Illuminate\Foundation\Support\Providers\EventServiceProvider as ServiceProvider;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Event;
 use JeroenNoten\LaravelAdminLte\Events\BuildingMenu;
 
@@ -33,6 +34,7 @@ class EventServiceProvider extends ServiceProvider
             $estado_local = Local::orderBy('created_at','desc')->first();
 
            //dd($estado_local);
+           if(Auth::user()->rol=='admin' || Auth::user()->rol=='peluquero'){
             if (isset($estado_local->estado)) {
                 if ($estado_local->estado == 'C') {
                     $event->menu->add([
@@ -111,6 +113,7 @@ class EventServiceProvider extends ServiceProvider
                     ],
                 ]);
             }
+        }
         });
     }
 }
