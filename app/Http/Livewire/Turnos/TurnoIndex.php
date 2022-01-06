@@ -45,11 +45,16 @@ class TurnoIndex extends Component
                 ->orWhere('estado', 'En proceso');
         })
             ->where('id_cliente', Auth::user()->id)
+            ->whereDate('created_at',$this->fecha_inicial)
             ->first();
         //Obtiene los turnos en proceso
-        $en_proceso = Turno::where('estado', 'En proceso')->get();
+        $en_proceso = Turno::where('estado', 'En proceso')
+        ->whereDate('created_at',$this->fecha_inicial)
+        ->get();
         //Obtiene los turnos pendientes o en cola
-        $pendientes = Turno::where('estado', 'Pendiente')->get();
+        $pendientes = Turno::where('estado', 'Pendiente')
+        ->whereDate('created_at',$this->fecha_inicial)
+        ->get();
         /* if($turno_usuario_actual){
             $proximo_turno=Turno::where(function ($query){$query->where('estado','Pendiente')
                 ->orWhere('estado','En proceso');})

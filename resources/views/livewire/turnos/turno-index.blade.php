@@ -23,7 +23,7 @@
                     @if ($turno_usuario_actual == null)
                         <h2>--</h2>
                     @else
-                        <h2>{{ $turno_usuario_actual->id }}</h2>
+                        <h2>{{ $turno_usuario_actual->num_turno }}</h2>
                     @endif
 
                 </div>
@@ -38,7 +38,7 @@
                     <ul>
                         @foreach ($pendientes as $index=> $pendiente)
                             <div class="row justify-content-center">
-                                <li>Turno No. {{ $pendiente->id }}</li>
+                                <li>Turno No. {{ $pendiente->num_turno }}</li>
                             </div>
                         @endforeach
                     </ul>
@@ -55,7 +55,7 @@
                     <ul>
                         @foreach ($en_proceso as $proceso)
                             <div class="row justify-content-center">
-                                <li>Turno No. {{ $proceso->id }}</li>
+                                <li>Turno No. {{ $proceso->num_turno }}</li>
                             </div>
                         @endforeach
                     </ul>

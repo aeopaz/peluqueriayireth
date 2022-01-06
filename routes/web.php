@@ -32,7 +32,7 @@ Route::get('/', function () {
         $estado = null;
     }
     return view('inicio.index', compact('estado'));
-});
+})->middleware('checklogout');//Evita que el usuario vaya a esta ruta si ya inició sesión
 
 Auth::routes();
 
