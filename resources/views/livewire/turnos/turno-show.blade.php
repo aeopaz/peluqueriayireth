@@ -14,7 +14,7 @@
                 <div class="modal-body" style="color: black;">
                     @if (isset($detalle_turno[0]))
                         <div class="container text-center">
-                            <h1>Turno No. {{ $detalle_turno[0]->id_turno }}</h1>
+                            <h1>Turno No. {{ $detalle_turno[0]->num_turno }}</h1>
                             <b>Nombre:</b> {{ $detalle_turno[0]->nombre_cliente }} - @if (Auth::guest()) Invitado @else Cliente @endif
                             <br>
                             <b>Fecha:</b> {{ date_format($detalle_turno[0]->created_at, 'Y-M-d') }}

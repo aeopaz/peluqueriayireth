@@ -77,7 +77,7 @@
                         <th wire:click='ordenar("turnos.id")'>No. Turno</th>
                         <th wire:click='ordenar("name")'>Cliente</th>
                         <th wire:click='ordenar("created_at")'>Fecha</th>
-                        <th wire:click='ordenar("created_at")'>Hora</th>
+                       {{--  <th wire:click='ordenar("created_at")'>Hora</th>--}}
                         <th wire:click='ordenar("estado")'>Estado</th>
                         <th>Acciones</th>
                     </tr>
@@ -94,10 +94,10 @@
                         @elseif ($turno->estado == 'Cancelado')
                             class="table-danger"
                     @endif>
-                    <td>{{ $turno->id_turno }}</td>
+                    <td>{{ $turno->num_turno }}</td>
                     <td>{{ $turno->nombre_cliente . '-' . $turno->rol }}</td>
                     <td>{{ date_format($turno->created_at, 'Y-M-d') }}</td>
-                    <td>{{ date_format($turno->created_at, 'g:i:s') }}</td>
+                  {{--   <td>{{ date_format($turno->created_at, 'g:i:s') }}</td> --}}
                     <td>{{ $turno->estado }}</td>
                     <td>
                         <button class="btn btn-primary"

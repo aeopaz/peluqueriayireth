@@ -16,7 +16,7 @@
 
             @foreach ($turnos as $turno)
                 <tr>
-                    <td>{{ $turno->id_turno }}</td>
+                    <td>{{ $turno->num_turno }}</td>
                     <td>{{ $turno->nombre_usuario }}</td>
                     <td>{{ date_format($turno->created_at, 'Y-M-d') }}</td>
                     <td>{{ date_format($turno->created_at, 'g:i:s') }}</td>

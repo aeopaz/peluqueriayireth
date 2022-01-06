@@ -7,6 +7,7 @@ use App\Models\Servicio;
 use App\Models\Turno;
 use App\Models\Local;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 use Livewire\Component;
 
 class TurnoCreate extends Component
@@ -42,11 +43,16 @@ class TurnoCreate extends Component
                     'nombre_cliente' => 'required',
                 ]);
 
+                $turnos=Turno::whereDate('created_at',date_format(now(), 'Y-m-d'))->get();//Obtiene los turnos que corresponden al día de hoy
+                $cantidad_turnos=$turnos->count();//Cuenta la cantidad de turnos del día
+                
+
                 //Crea el turno
                 $turno = new Turno();
                 $turno->id_cliente = $id_usuario; //Auth::user()->id;//
                 $turno->nombre_cliente = $this->nombre_cliente;
                 $turno->estado = 'Pendiente';
+                $turno->num_turno=$cantidad_turnos+1;//Asigna el número de turno que corresponde para el día
                 $turno->save();
                 //Obtiene el número de servicios selecionados por el usuario
                 $num_servicios = count($this->servicio);

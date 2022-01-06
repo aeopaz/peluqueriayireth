@@ -25,6 +25,7 @@ class TurnoIndex extends Component
             'name as nombre_usuario',
             'nombre_cliente', //Este campo es para poder guardar el nombre cuando el cliente no ha iniciado sesión
             'rol',
+            'num_turno',
             'turnos.created_at',
             'turnos.estado'
         )

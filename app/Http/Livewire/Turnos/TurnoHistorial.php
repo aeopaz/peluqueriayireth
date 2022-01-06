@@ -15,6 +15,7 @@ class TurnoHistorial extends Component
         $turnos=Turno::select(
         'turnos.id as id_turno',
         'name as nombre_usuario',
+        'num_turno',
         'turnos.created_at',
         'turnos.estado')
         ->join('users','users.id','id_cliente')
