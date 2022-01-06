@@ -25,15 +25,15 @@
         </div>
         <div class="carousel-inner">
             <div class="carousel-item active">
-                <img class="d-block rounded" src="{{ secure_asset('img/cortes/corte1.jpg') }}" alt="First slide" width="500px"
+                <img class="d-block rounded" src="{{ asset('img/cortes/corte1.jpg') }}" alt="First slide" width="500px"
                     height="500px">
             </div>
             <div class="carousel-item">
-                <img class="d-block rounded" src="{{ secure_asset('img/cortes/corte2.jpg') }}" alt="Second slide" width="500px"
+                <img class="d-block rounded" src="{{ asset('img/cortes/corte2.jpg') }}" alt="Second slide" width="500px"
                     height="500px">
             </div>
             <div class="carousel-item">
-                <img class="d-block rounded" src="{{ secure_asset('img/cortes/corte3.jpg') }}" alt="Third slide" width="500px"
+                <img class="d-block rounded" src="{{ asset('img/cortes/corte3.jpg') }}" alt="Third slide" width="500px"
                     height="500px">
             </div>
         </div>

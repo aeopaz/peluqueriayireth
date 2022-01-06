@@ -12,9 +12,14 @@ class TurnoIndex extends Component
 {
     protected $listeners = ['render' => 'render']; //Oyente del evento
     public $buscar, $columna = 'turnos.id', $orden = 'asc';
+    public $fecha_inicial,$fecha_final;
 
     public function render()
     {
+        $this->fecha_inicial=date_format(now(), 'Y-m-d');
+        $this->fecha_final=date_format(now(), 'Y-m-d');
+
+        //Buscar y ordenar
         $turnos = Turno::select(
             'turnos.id as id_turno',
             'name as nombre_usuario',
@@ -24,11 +29,15 @@ class TurnoIndex extends Component
             'turnos.estado'
         )
             ->join('users', 'users.id', 'id_cliente')
-            ->where('name', 'like', '%' . $this->buscar . '%') //Buscar y ordenar
+            ->where(function ($query){$query->where('name', 'like', '%' . $this->buscar . '%')
             ->orWhere('turnos.id', 'like', '%' . $this->buscar . '%')
-            ->orWhere('turnos.estado', 'like', '%' . $this->buscar . '%')
+            ->orWhere('turnos.estado', 'like', '%' . $this->buscar . '%');})
+            ->whereDate('turnos.created_at','>=',$this->fecha_inicial)
+            ->whereDate('turnos.created_at','<=',$this->fecha_final)
             ->orderBy($this->columna, $this->orden)
             ->get();
+
+            
         //Obtiene el turno actual del usuario si lo tiene
         $turno_usuario_actual = Turno::where(function ($query) {
             $query->where('estado', 'Pendiente')

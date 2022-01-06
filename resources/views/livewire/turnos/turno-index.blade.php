@@ -66,6 +66,10 @@
     </div>
     @if (Auth::user()->rol == 'admin' || Auth::user()->rol == 'peluquero')
         <input type="text" class="form-control mt-1" placeholder="Buscar" wire:model='buscar'>
+        <b>Fecha Inicial</b>
+        <input type="date" name="" id="" wire:model='fecha_inicial'>
+        <b>Fecha Final</b>
+        <input type="date" name="" id="" wire:model='fecha_final'>
         @if (count($turnos))
             <table class="table table-hover table-responsive">
                 <thead>
